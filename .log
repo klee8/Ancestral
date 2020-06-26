@@ -39,7 +39,7 @@ perl check_mglo_output_overlaps.pl Ecl_gene_order.dat A6_geneorder.out > Ecl_chr
 ```
 Graph data to see how they compare across tip genomes
 ```
-R slave --vanilla < 
+R slave --vanilla < graph_distribution_query_on_target
 
 ```
 
@@ -49,10 +49,12 @@ Looked at the presence/absence (1/0) of E.clarkii chr 2 genes on each tip and an
 
 ```
 # tips
-perl flag_gene_blocks.pl Ecl_chr2.txt Ecl_gene_order.dat MGLO_tagged.out
+perl flag_gene_blocks.pl Ecl_chr2.txt Ecl_gene_order.dat Epichloe_flagged_with_Ecl_chr2.txt
 # ancestors
-perl flag_gene_blocks.pl Ecl_chr2.txt geneorder.out MGLO_tagged.out
+perl flag_gene_blocks.pl Ecl_chr2.txt geneorder.out Ancestors_flagged_with_Ecl_chr2.txt
 ```
+
+Results look pretty framented. I would expect A2 and A4 to have complete Ecl chr2s, but they don't seem to? However, A6 has genes on chrs 1,4,5 as per David's graphs, but they are not in clean blocks on those chromosomes.
 
 
 

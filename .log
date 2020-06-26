@@ -9,6 +9,11 @@ Testing output of different programs to see if we can reconstruct fungal genome 
 MLGO output of gene order
 Progressive Cactus from alignment data
 
+
+NOTE: There seem to be different trees for cactus and mglo?
+cactus:# hal (((Eam:1,Ebr:1)Anc3:1,Efe:1)Anc1:1,((Eel728:1,Eel732:1)Anc4:1,(Etp:1,(Ecl:1,Ety:1)Anc6:1)Anc5:1)Anc2:1)Anc0;
+mglo:((Eam708,EfeFl1)A1,((Ebr1,(Eel728,Eel732)A2)A3,(Etp76,(Ety1756,Ecl1605)A4)A5)A6)A7;
+
 #### Cactus data
 DATA from Amelie
 Export the HAL alignment as MAF referenced at the root

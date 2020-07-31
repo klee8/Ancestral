@@ -26,7 +26,8 @@ while(<GFF>) {
         $line[8] =~ s/;.*//; 
         my $chr_num = "";
         if ($line[0]=~ /_/) { my @temp = split("_", $line[0]); $chr_num = $temp[1]; }
-        if ($line[0]=~ /chr/) { $chr_num = $line[0] =~ s/chr//g; }
+        if ($line[0]=~ /chr/) { $chr_num = $line[0]; $chr_num =~ s/chr//g; }
+        if ($line[0]=~ /mtDNA/) { $chr_num = 8; }
         # reset chromosome counter on new chromosomes
         if ( $chr_num != $current_chr ) { 
             $current_chr = $chr_num;

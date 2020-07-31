@@ -25,9 +25,13 @@ mv Eama708* Epichloe/01Genomes/
 # Eely728
 perl ./scripts/def_from_gff.pl ../data/Epichloe_Transect_Genomes/E.elymi_NFe728/annotation/Epichloe_elymi_728.gff3 Eely728
 perl ./scripts/make_prt.pl ../data/Epichloe_Transect_Genomes/E.elymi_NFe728/annotation/Epichloe_elymi_728.proteins.fa Eely728.def Eely728
-for i in {1..7}; do echo -ne "$i\t" >> Eely728.ch; done; echo >> Eely728.ch
-for i in {1..7}; do echo -ne "0\t" >> Eely728.ch; done; echo >> Eely728.ch
-for i in {1..7}; do echo -ne "0\t" >> Eely728.ch; done; echo >> Eely728.ch
+# has mitochondria - numbered as chr 8 here
+for i in {1..8}; do echo -ne "$i\t" >> Eely728.ch; done; echo >> Eely728.ch
+for i in {1..8}; do echo -ne "0\t" >> Eely728.ch; done; echo >> Eely728.ch
+for i in {1..8}; do echo -ne "0\t" >> Eely728.ch; done; echo >> Eely728.ch
+# change chr 'm' to chr 8 in files too
+sed -i 's/\tm\t/\t8\t/g' Eely728.def
+sed -i 's/\tm\t/\t8\t/g' Eely728.prt
 mv Eely728* Epichloe/01Genomes/
 #data/Epichloe_Transect_Genomes/E.elymi_NFe728/annotation/Eel728_AT_rich.gff
 
@@ -48,6 +52,7 @@ mv Eely728* Epichloe/01Genomes/
 # EfesFl1 (note the only protein file available matches the v2 gff3 file)
 perl ./scripts/def_from_gff.pl ../data/Epichloe_Transect_Genomes/E.festucae_Fl1/Old/EfeFl1_v2.gff3 EfesFl1
 perl ./scripts/make_prt.pl ../data/Epichloe_Transect_Genomes/E.festucae_Fl1/EfFl1_proteins.faa EfesFl1.def EfesFl1
+
 for i in {1..7}; do echo -ne "$i\t" >> EfesFl1.ch; done; echo >> EfesFl1.ch
 for i in {1..7}; do echo -ne "0\t" >> EfesFl1.ch; done; echo >> EfesFl1.ch
 for i in {1..7}; do echo -ne "0\t" >> EfesFl1.ch; done; echo >> EfesFl1.ch

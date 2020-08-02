@@ -9,6 +9,10 @@ perl ./scripts/make_prt.pl ../data/Epichloe_Transect_Genomes/E.amarillans_NFe708
 for i in {1..7}; do echo -ne "$i\t" >> Eama708.ch; done; echo >> Eama708.ch
 for i in {1..7}; do echo -ne "0\t" >> Eama708.ch; done; echo >> Eama708.ch
 for i in {1..7}; do echo -ne "0\t" >> Eama708.ch; done; echo >> Eama708.ch
+# sort new def file by chromosome and position
+sort -k3,3 -k4,4 Eama708.rdef > Eama708.srdef
+mv Eama708.srdef Eama708.def
+rm Eama708.rdef
 mv Eama708* Epichloe/01Genomes/
 
 # Ebro1 
@@ -32,6 +36,10 @@ for i in {1..8}; do echo -ne "0\t" >> Eely728.ch; done; echo >> Eely728.ch
 # change chr 'm' to chr 8 in files too
 sed -i 's/\tm\t/\t8\t/g' Eely728.def
 sed -i 's/\tm\t/\t8\t/g' Eely728.prt
+# sort new def file by chromosome and position
+sort -k3,3 -k4,4 Eely728.rdef > Eely728.srdef
+mv Eely728.srdef Eely728.def
+rm Eely728.rdef
 mv Eely728* Epichloe/01Genomes/
 #data/Epichloe_Transect_Genomes/E.elymi_NFe728/annotation/Eel728_AT_rich.gff
 
@@ -56,6 +64,10 @@ perl ./scripts/make_prt.pl ../data/Epichloe_Transect_Genomes/E.festucae_Fl1/EfFl
 for i in {1..7}; do echo -ne "$i\t" >> EfesFl1.ch; done; echo >> EfesFl1.ch
 for i in {1..7}; do echo -ne "0\t" >> EfesFl1.ch; done; echo >> EfesFl1.ch
 for i in {1..7}; do echo -ne "0\t" >> EfesFl1.ch; done; echo >> EfesFl1.ch
+# sort new def file by chromosome and position
+sort -k3,3 -k4,4 EfesFl1.rdef > EfesFl1.srdef
+mv EfesFl1.srdef EfesFl1.def
+rm EfesFl1.rdef
 mv EfesFl1* Epichloe/01Genomes/ 
 
 #data/Epichloe_Transect_Genomes/E.festucae_Fl1/EfeFl1_AT_rich.gff  

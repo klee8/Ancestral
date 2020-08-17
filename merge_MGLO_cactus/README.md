@@ -32,8 +32,8 @@ fmt_cactus_for_R.pl  data/cactus.maf data/cactus_fmtR.maf
 ```
 
 MGLO files are also weird to get into R. Here we put each chromosome list of 
-genes on one tab-delimited line with a column for genome name and a column for
-chromosome number at the start
+genes on one tab-delimited line with a column for genome name, a column for
+chromosome number and a column with a comma-delimited list of gene-order numbers
 ```
 fmt_MGLO_for_R.pl data/gene_order.dat data/gene_order_fmtR.dat
 fmt_MGLO_for_R.pl data/geneorder.out data/geneorder_fmtR.out

@@ -4,7 +4,6 @@
 #!usr/bin/perl -w
 use strict;
 
-
 my $fastafile = $ARGV[0];
 my $def_file = $ARGV[1];
 my $species = $ARGV[2];
@@ -36,7 +35,9 @@ my $flag = 0;
 my %prot_exists;
 while(<FASTA>) {
     my $gene;
-    if ( ($_=~ /^>(.*)-T1/) || ($_=~ /^>(.*)\s/) )  {
+    if ( ($_=~ /^>(.*)-T1/) || ($_=~ /^>(.*)\s/) )  {  
+#    if ($_=~ /^>(.*)\s/)  {
+
         $gene = $1;
         $flag = 0; 
 #        print "$gene: $def{$gene}\n";  

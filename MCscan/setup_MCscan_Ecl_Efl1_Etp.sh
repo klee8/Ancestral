@@ -63,8 +63,8 @@ done
 #########################################################
 
 echo "create and populate results directory ................."
-mkdir results
-cd results
+mkdir results_structure
+cd results_structure
 for i in Ecl Efl1 Etp
 do
     cp ../data/$i.bed .
@@ -107,9 +107,15 @@ python -m jcvi.graphics.dotplot Efl1.Etp.anchors
 #chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19
 #Pp01,Pp02,Pp03,Pp04,Pp05,Pp06,Pp07,Pp08
 
-echo '''Ecl1605_1,Ecl1605_2,Ecl1605_3,Ecl1605_4,Ecl1605_5,Ecl1605_6,Ecl1605_7
-EfeFl1_1,EfeFl1_2,EfeFl1_3,EfeFl1_4,EfeFl1_5,EfeFl1_6,EfeFl1_7
-Etp76_1,Etp76_2,Etp76_3,Etp76_4,Etp76_5,Etp76_6,Etp76_7'''> seqids
+# in number order
+#echo '''Ecl1605_1,Ecl1605_2,Ecl1605_3,Ecl1605_4,Ecl1605_5,Ecl1605_6,Ecl1605_7
+#EfeFl1_1,EfeFl1_2,EfeFl1_3,EfeFl1_4,EfeFl1_5,EfeFl1_6,EfeFl1_7
+#Etp76_1,Etp76_2,Etp76_3,Etp76_4,Etp76_5,Etp76_6,Etp76_7'''> seqids
+
+# play with chr order
+echo '''Ecl1605_1,Ecl1605_2,Ecl1605_4,Ecl1605_6,Ecl1605_3,Ecl1605_5,Ecl1605_7
+EfeFl1_1,EfeFl1_6,EfeFl1_2,EfeFl1_4,EfeFl1_3,EfeFl1_5,EfeFl1_7
+Etp76_2,Etp76_6,Etp76_1,Etp76_3,Etp76_4,Etp76_5,Etp76_7'''> seqids
 
 ### layout < example graph layout
 ## y, xstart, xend, rotation, color, label, va,  bed

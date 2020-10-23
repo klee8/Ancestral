@@ -84,8 +84,8 @@ rm MLGO_A6.cds
 #########################################################
 
 echo "create and populate results directory ................."
-mkdir results
-cd results
+mkdir results_ancestral
+cd results_anccestral
 cp ../data/cactus_Anc0.bed .
 cp ../data/cactus_Anc0.cds .
 cp ../data/MLGO_A6.bed .

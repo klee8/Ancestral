@@ -32,7 +32,7 @@ python3 -m jcvi.compara.catalog ortholog Ecl Efe437 --cscore=.99 --no_strip_name
 python3 -m jcvi.compara.catalog ortholog Ecl Efl1 --cscore=.99 --no_strip_name
 python3 -m jcvi.compara.catalog ortholog Ecl Eel728 --cscore=.99 --no_strip_name
 python3 -m jcvi.compara.catalog ortholog Ecl Eel732 --cscore=.99 --no_strip_name
-python3 -m jcvi.compara.catalog ortholog Ecl Ecl --cscore=.99 --no_strip_name
+python3 -m jcvi.compara.catalog ortholog Ecl Ecl --cscore=.70 --no_strip_name  # removed filter step to run Ecl against itself
 python3 -m jcvi.compara.catalog ortholog Ecl Ety --cscore=.99 --no_strip_name
 python3 -m jcvi.compara.catalog ortholog Ecl Etp --cscore=.99 --no_strip_name
 

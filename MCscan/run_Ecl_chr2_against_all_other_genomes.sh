@@ -1,7 +1,7 @@
 # check in MCscan which chromosomes line up with E clarkii chr2
 # (previously used MLGO comparison data)
 
-# RESULTS from below script:
+# RESULTS from below script with filtered synteny blocks:
 # Etp - 1,2,3,6
 # Ecl - NA (can't compare self)
 # Ety - NA (not enough data)
@@ -20,10 +20,12 @@
 
 
 ########################   CHECK CHRS that map to Eclarkii chr 2
-cd results_chr2
+cd results_Ecl_chr2
+
+rm *anchors*
+rm *last*
 
 # calculate synteny blocks for comparison with Ecl chr2
-#echo "calculate filtered synteny blocks............."
 python3 -m jcvi.compara.catalog ortholog Ecl Eam --cscore=.99 --no_strip_name
 python3 -m jcvi.compara.catalog ortholog Ecl Ebr --cscore=.99 --no_strip_name
 python3 -m jcvi.compara.catalog ortholog Ecl Efe437 --cscore=.99 --no_strip_name
@@ -34,14 +36,15 @@ python3 -m jcvi.compara.catalog ortholog Ecl Ecl --cscore=.99 --no_strip_name
 python3 -m jcvi.compara.catalog ortholog Ecl Ety --cscore=.99 --no_strip_name
 python3 -m jcvi.compara.catalog ortholog Ecl Etp --cscore=.99 --no_strip_name
 
+
 # make new anchor files for karyotype
+python3 -m jcvi.compara.synteny screen --minspan=30 --simple Ecl.Ecl.anchors Ecl.Ecl.anchors.new
 python3 -m jcvi.compara.synteny screen --minspan=30 --simple Ecl.Eam.anchors Ecl.Eam.anchors.new
 python3 -m jcvi.compara.synteny screen --minspan=30 --simple Ecl.Ebr.anchors Ecl.Ebr.anchors.new
 python3 -m jcvi.compara.synteny screen --minspan=30 --simple Ecl.Efe437.anchors Ecl.Efe437.anchors.new
 python3 -m jcvi.compara.synteny screen --minspan=30 --simple Ecl.Efl1.anchors Ecl.Efl1.anchors.new
 python3 -m jcvi.compara.synteny screen --minspan=30 --simple Ecl.Eel728.anchors Ecl.Eel728.anchors.new
 python3 -m jcvi.compara.synteny screen --minspan=30 --simple Ecl.Eel732.anchors Ecl.Eel732.anchors.new
-python3 -m jcvi.compara.synteny screen --minspan=30 --simple Ecl.Ecl.anchors Ecl.Ecl.anchors.new
 python3 -m jcvi.compara.synteny screen --minspan=30 --simple Ecl.Ety.anchors Ecl.Ety.anchors.new
 python3 -m jcvi.compara.synteny screen --minspan=30 --simple Ecl.Etp.anchors Ecl.Etp.anchors.new
 
@@ -58,7 +61,7 @@ echo '''# y, xstart, xend, rotation, color, label, va,  bed
 e, 0, 1, Ecl.Eam.anchors.simple''' > layout
 
 python3 -m jcvi.graphics.karyotype seqids layout
-mv karyotype.pdf karyotype_Eclchr2.Eam.pdf
+mv karyotype.pdf karyotype_filt99_Eclchr2.Eam.pdf
 
 
 ## Ebr
@@ -72,7 +75,7 @@ echo '''# y, xstart, xend, rotation, color, label, va,  bed
 e, 0, 1, Ecl.Ebr.anchors.simple''' > layout
 
 python3 -m jcvi.graphics.karyotype seqids layout
-mv karyotype.pdf karyotype_Eclchr2.Ebr.pdf
+mv karyotype.pdf karyotype_filt99_Eclchr2.Ebr.pdf
 
 ## Ecl
 echo '''Ecl1605_2
@@ -85,7 +88,7 @@ echo '''# y, xstart, xend, rotation, color, label, va,  bed
 e, 0, 1, Ecl.Ecl.anchors.simple''' > layout
 
 python3 -m jcvi.graphics.karyotype seqids layout
-mv karyotype.pdf karyotype_Eclchr2.Ecl.pdf
+mv karyotype.pdf karyotype_filt99_Eclchr2.Ecl.pdf
 
 
 ## Efe437 -- Ecl chr 2 maps to Efe437 chr 1 and 6
@@ -99,11 +102,10 @@ echo '''# y, xstart, xend, rotation, color, label, va,  bed
 e, 0, 1, Ecl.Efe437.anchors.simple''' > layout
 
 python3 -m jcvi.graphics.karyotype seqids layout
-mv karyotype.pdf karyotype_Eclchr2.Efe437.pdf
+mv karyotype.pdf karyotype_filt99_Eclchr2.Efe437.pdf
 
 
-
-## Eel728 
+## Eel728
 echo '''Ecl1605_2
 Eel728_1,Eel728_2,Eel728_3,Eel728_4,Eel728_5,Eel728_6,Eel728_7''' > seqids
 
@@ -114,7 +116,7 @@ echo '''# y, xstart, xend, rotation, color, label, va,  bed
 e, 0, 1, Ecl.Eel728.anchors.simple''' > layout
 
 python3 -m jcvi.graphics.karyotype seqids layout
-mv karyotype.pdf karyotype_Eclchr2.Eel728.pdf
+mv karyotype.pdf karyotype_filt99_Eclchr2.Eel728.pdf
 
 ## Eel732
 echo '''Ecl1605_2
@@ -127,7 +129,7 @@ echo '''# y, xstart, xend, rotation, color, label, va,  bed
 e, 0, 1, Ecl.Eel732.anchors.simple''' > layout
 
 python3 -m jcvi.graphics.karyotype seqids layout
-mv karyotype.pdf karyotype_Eclchr2.Eel732.pdf
+mv karyotype.pdf karyotype_filt99_Eclchr2.Eel732.pdf
 
 ## Efl1
 echo '''Ecl1605_2
@@ -140,9 +142,9 @@ echo '''# y, xstart, xend, rotation, color, label, va,  bed
 e, 0, 1, Ecl.Efl1.anchors.simple''' > layout
 
 python3 -m jcvi.graphics.karyotype seqids layout
-mv karyotype.pdf karyotype_Eclchr2.Efl1.pdf
+mv karyotype.pdf karyotype_filt99_Eclchr2.Efl1.pdf
 
-## Etp 
+## Etp
 echo '''Ecl1605_2
 Etp76_1,Etp76_2,Etp76_3,Etp76_4,Etp76_5,Etp76_6,Etp76_7''' > seqids
 
@@ -153,10 +155,10 @@ echo '''# y, xstart, xend, rotation, color, label, va,  bed
 e, 0, 1, Ecl.Etp.anchors.simple''' > layout
 
 python3 -m jcvi.graphics.karyotype seqids layout
-mv karyotype.pdf karyotype_Eclchr2.Etp.pdf
+mv karyotype.pdf karyotype_filt99_Eclchr2.Etp.pdf
 
 
-## Ety 
+## Ety
 echo '''Ecl1605_2
 Ety1756_1,Ety1756_2,Ety1756_3,Ety1756_4,Ety1756_5,Ety1756_6,Ety1756_7''' > seqids
 
@@ -167,8 +169,6 @@ echo '''# y, xstart, xend, rotation, color, label, va,  bed
 e, 0, 1, Ecl.Ety.anchors.simple''' > layout
 
 python3 -m jcvi.graphics.karyotype seqids layout
-mv karyotype.pdf karyotype_Eclchr2.Ety.pdf
-
-
+mv karyotype.pdf karyotype_filt99_Eclchr2.Ety.pdf
 
 cd ..
